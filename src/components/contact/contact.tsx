@@ -5,7 +5,8 @@ const ContactUs: React.FC = () => {
     const [form, setForm] = useState({
         name: '',
         phone: '',
-        email: ''
+        email: '',
+        countryCode: '+1'
     });
 
     const [errors, setErrors] = useState({
@@ -19,7 +20,6 @@ const ContactUs: React.FC = () => {
     const [particles, setParticles] = useState<Array<{ id: number; x: number; y: number; delay: number; size: number; color: string }>>([]);
     const [isVisible, setIsVisible] = useState(false);
     const [focusedField, setFocusedField] = useState<string | null>(null);
-    // const formRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const colors = ['#3B82F6', '#8B5CF6', '#EC4899', '#10B981', '#F59E0B'];
@@ -35,7 +35,7 @@ const ContactUs: React.FC = () => {
         setTimeout(() => setIsVisible(true), 100);
     }, []);
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
         setForm(prev => ({ ...prev, [name]: value }));
         if (errors[name as keyof typeof errors]) {
@@ -79,7 +79,7 @@ const ContactUs: React.FC = () => {
             setSubmitted(true);
             setTimeout(() => {
                 setSubmitted(false);
-                setForm({ name: '', phone: '', email: '' });
+                setForm({ name: '', phone: '', email: '', countryCode: '+1' });
             }, 4000);
         } catch (error) {
             console.error('Error submitting form:', error);
@@ -199,11 +199,6 @@ const ContactUs: React.FC = () => {
                     <div className="w-full max-w-7xl mx-auto">
                         {/* Header */}
                         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-                            {/* <div className="inline-flex items-center gap-2 bg-white/60 backdrop-blur-sm rounded-full px-6 py-2 mb-6 border border-purple-200/50 shadow-lg">
-                                <Camera className="w-4 h-4 text-purple-600" />
-                                <span className="text-purple-800 font-medium text-sm">AI Photo Studio</span>
-                            </div> */}
-
                             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight mt-8">
                                 <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
                                     Let's Connect
@@ -333,7 +328,6 @@ const ContactUs: React.FC = () => {
                                                                 <option value="+44">🇬🇧 +44</option>
                                                                 <option value="+61">🇦🇺 +61</option>
                                                                 <option value="+81">🇯🇵 +81</option>
-                                                                {/* Add more country codes as needed */}
                                                             </select>
 
                                                             {/* Phone Input */}
@@ -357,7 +351,6 @@ const ContactUs: React.FC = () => {
                                                             <p className="text-red-500 text-sm mt-2 font-medium">{errors.phone}</p>
                                                         )}
                                                     </div>
-
 
                                                     {/* Email Field */}
                                                     <div className="group">
