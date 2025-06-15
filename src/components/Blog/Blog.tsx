@@ -159,7 +159,7 @@ const Blog: React.FC = () => {
           </div>
           <div className="relative mb-16 rounded-2xl overflow-hidden shadow-2xl">
   <img
-    src="/gallery/32.webp"
+    src="/gallery/31.webp"
     alt="AI in Fashion Cover"
     className="w-full h-64 md:h-96 object-cover"
   />
