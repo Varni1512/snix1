@@ -158,12 +158,12 @@ const Blog: React.FC = () => {
             </h1>
           </div>
           <div className="relative mb-16 rounded-2xl overflow-hidden shadow-2xl">
-            <img
-              src="/gallery/32.webp"
-              alt="AI in Fashion Cover"
-              className="w-full h-102 md:h-180 object-cover"
-            />
-          </div>
+  <img
+    src="/gallery/32.webp"
+    alt="AI in Fashion Cover"
+    className="w-full h-64 md:h-96 object-cover"
+  />
+</div>
           {blogs.length === 0 ? (
             <p className="text-gray-500 italic">No blogs are available.</p>
           ) : (
