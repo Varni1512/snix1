@@ -11,7 +11,7 @@ interface VisibilityState {
 }
 
 const heroImages = [
-  '/gallery/3.webp',
+  '/gallery/new.jpg',
 ];
 
 
