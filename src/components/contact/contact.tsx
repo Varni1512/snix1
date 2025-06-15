@@ -230,12 +230,12 @@ const ContactUs: React.FC = () => {
 
                                             {/* Left Floating Image */}
                                             <div className="image-float absolute left-0 top-1/2 transform -translate-y-1/2 z-20 hidden md:block">
-                                                    <img src='/models/7.png' className='w-40 h-48 rounded-2xl' alt="Gallery" />
+                                                <img src='/models/7.png' className='w-40 h-48 rounded-2xl' alt="Gallery" />
                                             </div>
 
                                             {/* Right Floating Image */}
                                             <div className="image-float absolute right-0 top-1/2 transform -translate-y-1/2 z-20 hidden md:block">
-                                                    <img src='/aishoot/accesories.png' className='w-40 h-48 rounded-2xl' alt="Accessories" />
+                                                <img src='/aishoot/accesories.png' className='w-40 h-48 rounded-2xl' alt="Accessories" />
                                             </div>
 
                                             {/* Top Small Image */}
@@ -320,7 +320,23 @@ const ContactUs: React.FC = () => {
                                                             <Phone className="w-4 h-4 text-purple-500" />
                                                             Phone Number
                                                         </label>
-                                                        <div className="relative">
+                                                        <div className="relative flex">
+                                                            {/* Country Code Dropdown */}
+                                                            <select
+                                                                name="countryCode"
+                                                                value={form.countryCode}
+                                                                onChange={handleChange}
+                                                                className="px-4 py-4 bg-white/60 backdrop-blur-sm border-2 border-gray-200 cursor-pointer rounded-l-2xl text-gray-800 focus:outline-none text-lg font-medium"
+                                                            >
+                                                                <option value="+1">🇺🇸 +1</option>
+                                                                <option value="+91">🇮🇳 +91</option>
+                                                                <option value="+44">🇬🇧 +44</option>
+                                                                <option value="+61">🇦🇺 +61</option>
+                                                                <option value="+81">🇯🇵 +81</option>
+                                                                {/* Add more country codes as needed */}
+                                                            </select>
+
+                                                            {/* Phone Input */}
                                                             <input
                                                                 name="phone"
                                                                 type="tel"
@@ -329,16 +345,19 @@ const ContactUs: React.FC = () => {
                                                                 onFocus={() => handleFocus('phone')}
                                                                 onBlur={handleBlur}
                                                                 className={`w-full px-5 py-4 bg-white/60 backdrop-blur-sm border-2 ${errors.phone ? 'border-red-400 animate-shake' :
-                                                                    focusedField === 'phone' ? 'border-purple-400' : 'border-gray-200'
-                                                                    } rounded-2xl text-gray-800 placeholder-gray-500 focus:outline-none transition-all duration-300 font-medium text-lg`}
-                                                                placeholder="+1 (555) 123-4567"
+                                                                        focusedField === 'phone' ? 'border-purple-400' : 'border-gray-200'
+                                                                    } rounded-r-2xl text-gray-800 placeholder-gray-500 focus:outline-none transition-all duration-300 font-medium text-lg`}
+                                                                placeholder="123-456-7890"
                                                             />
                                                             {focusedField === 'phone' && (
                                                                 <div className="absolute inset-0 bg-gradient-to-r from-purple-400/10 to-pink-400/10 rounded-2xl animate-pulse pointer-events-none" />
                                                             )}
                                                         </div>
-                                                        {errors.phone && <p className="text-red-500 text-sm mt-2 font-medium">{errors.phone}</p>}
+                                                        {errors.phone && (
+                                                            <p className="text-red-500 text-sm mt-2 font-medium">{errors.phone}</p>
+                                                        )}
                                                     </div>
+
 
                                                     {/* Email Field */}
                                                     <div className="group">
