@@ -161,7 +161,7 @@ const Blog: React.FC = () => {
             <img
               src="/gallery/31.webp"
               alt="AI in Fashion Cover"
-              className="w-full h-48 md:h-80 object-cover"
+              className="w-full h-50 md:h-80 object-cover object-top"
             />
           </div>
           {blogs.length === 0 ? (
