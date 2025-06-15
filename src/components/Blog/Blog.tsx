@@ -157,6 +157,13 @@ const Blog: React.FC = () => {
               {/* <div className="absolute -bottom-0 left-[48%] transform -translate-x-1/2 w-10 md:w-30 h-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full animate-pulse"></div> */}
             </h1>
           </div>
+          <div className="relative mb-16 rounded-2xl overflow-hidden shadow-2xl">
+            <img
+              src="/gallery/32.webp"
+              alt="AI in Fashion Cover"
+              className="w-full h-102 md:h-180 object-cover"
+            />
+          </div>
           {blogs.length === 0 ? (
             <p className="text-gray-500 italic">No blogs are available.</p>
           ) : (
