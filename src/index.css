@@ -1,0 +1,447 @@
+@import "tailwindcss";
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  padding: 2rem;
+
+  /* Light pink gradient background */
+  background: linear-gradient(
+    135deg,
+    #fef7ff 0%,
+    #fce7f3 25%,
+    #fbcfe8 50%,
+    #f9a8d4 75%,
+    #ec4899 100%
+  );
+
+  /* Add floating background elements */
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+        circle at 20% 20%,
+        rgba(236, 72, 153, 0.1) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 80% 80%,
+        rgba(219, 39, 119, 0.08) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 50% 50%,
+        rgba(190, 24, 93, 0.05) 0%,
+        transparent 50%
+      );
+    z-index: -1;
+  }
+}
+
+.card_wrapper {
+  position: relative;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.card {
+  position: relative;
+  filter: drop-shadow(0 10px 40px rgba(236, 72, 153, 0.3));
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  animation: orbFloat 6s ease-in-out infinite;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  filter: drop-shadow(0 20px 60px rgba(236, 72, 153, 0.4));
+}
+
+.card-image-with-svg-mask {
+  width: 80vw;
+  height: 80vh;
+  max-width: 900px;
+  max-height: 600px;
+  position: relative;
+  border-top-left-radius: 2.5rem;
+  border-top-right-radius: 2.5rem;
+  border-bottom-left-radius: 2.5rem;
+  overflow: hidden;
+
+  /* Video background styling with pink overlay */
+  background: linear-gradient(
+    135deg,
+    rgba(236, 72, 153, 0.9) 0%,
+    rgba(219, 39, 119, 0.8) 50%,
+    rgba(190, 24, 93, 0.9) 100%
+  );
+}
+
+/* Video element styling */
+.card-image-with-svg-mask video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+/* Mask image */
+.card-image-with-svg-mask {
+  -webkit-mask: url("/images/top-center.png") center / contain no-repeat,
+    url("/images/bottom-right.png") center / contain no-repeat,
+    linear-gradient(#000000 0 0);
+  mask-size: 22rem, 30rem;
+  mask-position: top center, bottom right;
+  mask-composite: exclude;
+}
+
+p.text {
+  color: #ffffff;
+  width: 350px;
+  position: absolute;
+  right: 5%;
+  top: 2%;
+  font-size: 20px;
+  line-height: 1.6;
+  font-weight: 500;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  animation: fadeInUp 0.6s ease-out 0.4s both;
+  background: rgba(219, 39, 119, 0.1);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.button {
+  position: absolute;
+  background: linear-gradient(135deg, #ec4899 0%, #db2777 50%, #be185d 100%);
+  border-radius: 1.5rem;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 8px 32px rgba(236, 72, 153, 0.4);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(236, 72, 153, 0.5);
+  background: linear-gradient(135deg, #db2777 0%, #be185d 50%, #9d174d 100%);
+}
+
+.top-center {
+  width: 240px;
+  height: 95px;
+  top: 1%;
+  right: 0%;
+  left: 0%;
+  margin: 0 auto;
+  animation: fadeInUp 0.6s ease-out 0.2s both;
+}
+
+.top-center .text {
+  font-size: 28px;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #ffffff 0%, #fdf2f8 50%, #fce7f3 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: none;
+  letter-spacing: 0.05em;
+  position: relative;
+  width: auto;
+  padding: 0;
+  border-radius: 0;
+  backdrop-filter: none;
+  border: none;
+}
+
+.bottom-right {
+  width: 380px;
+  height: 160px;
+  border-radius: 2.5rem;
+  bottom: 2%;
+  right: 1%;
+  animation: fadeInUp 0.6s ease-out 0.6s both;
+}
+
+.bottom-right .text {
+  font-size: 19px;
+  text-align: center;
+  position: relative;
+  color: #ffffff;
+  font-weight: 600;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  line-height: 1.4;
+  width: auto;
+  padding: 0;
+  border-radius: 0;
+  backdrop-filter: none;
+  border: none;
+  background: transparent;
+}
+
+.fa-quote-left,
+.fa-quote-right {
+  position: absolute;
+  font-size: 40px;
+  color: rgba(255, 255, 255, 0.8);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  transition: all 0.3s ease;
+}
+
+.fa-quote-left {
+  top: -35px;
+  left: -10px;
+  animation: float1 4s ease-in-out infinite;
+}
+
+.fa-quote-right {
+  right: 20px;
+  bottom: -30px;
+  animation: float2 4s ease-in-out infinite reverse;
+}
+
+/* Floating elements with pink theme */
+.container::after {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(
+    135deg,
+    rgba(236, 72, 153, 0.1),
+    rgba(219, 39, 119, 0.15)
+  );
+  border-radius: 50%;
+  top: 20%;
+  left: 10%;
+  animation: float1 8s ease-in-out infinite;
+  filter: blur(1px);
+}
+
+/* Additional floating elements for more depth */
+.container::before {
+  content: "";
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(
+    135deg,
+    rgba(249, 168, 212, 0.1),
+    rgba(244, 114, 182, 0.12)
+  );
+  border-radius: 50%;
+  bottom: 25%;
+  right: 15%;
+  animation: float2 10s ease-in-out infinite;
+  filter: blur(1px);
+  z-index: -1;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes orbFloat {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(1deg);
+  }
+}
+
+@keyframes float1 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(15px, -20px) scale(1.05);
+  }
+  66% {
+    transform: translate(-10px, 15px) scale(0.95);
+  }
+}
+
+@keyframes float2 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-15px, -15px) scale(1.1);
+  }
+}
+
+/* Enhanced pink theme elements */
+.card-image-with-svg-mask::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    45deg,
+    rgba(236, 72, 153, 0.05) 0%,
+    rgba(219, 39, 119, 0.08) 25%,
+    rgba(190, 24, 93, 0.05) 50%,
+    rgba(157, 23, 77, 0.08) 75%,
+    rgba(131, 24, 67, 0.05) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .card-image-with-svg-mask {
+    width: 95vw;
+    height: 70vh;
+  }
+
+  p.text {
+    width: 280px;
+    font-size: 18px;
+    right: 3%;
+    top: 3%;
+    padding: 1rem;
+    background: rgba(219, 39, 119, 0.15);
+  }
+
+  .top-center {
+    width: 200px;
+    height: 80px;
+  }
+
+  .top-center .text {
+    font-size: 24px;
+  }
+
+  .bottom-right {
+    width: 320px;
+    height: 140px;
+    right: 3%;
+  }
+
+  .bottom-right .text {
+    font-size: 17px;
+  }
+
+  .fa-quote-left,
+  .fa-quote-right {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card-image-with-svg-mask {
+    width: 98vw;
+    height: 60vh;
+  }
+
+  p.text {
+    width: 250px;
+    font-size: 16px;
+    background: rgba(219, 39, 119, 0.2);
+  }
+
+  .top-center {
+    width: 180px;
+    height: 70px;
+  }
+
+  .top-center .text {
+    font-size: 20px;
+  }
+
+  .bottom-right {
+    width: 280px;
+    height: 120px;
+  }
+
+  .bottom-right .text {
+    font-size: 15px;
+  }
+}
+
+/* Additional pink theme accents */
+.button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.button:hover::before {
+  left: 100%;
+}
+
+/* Subtle glow effects */
+.card {
+  position: relative;
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(
+    45deg,
+    rgba(236, 72, 153, 0.1),
+    rgba(219, 39, 119, 0.15),
+    rgba(190, 24, 93, 0.1)
+  );
+  border-radius: inherit;
+  z-index: -1;
+  filter: blur(10px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover::after {
+  opacity: 1;
+}
+
+.clip-v-shape {
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 50% 100%, 0 80%);
+}
