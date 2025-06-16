@@ -51,7 +51,7 @@ const Blog1: React.FC = () => {
         <img
           src={post.image}
           alt="Blog"
-          className="w-full h-90 sm:h-100 object-cover"
+          className="w-full h-100 sm:h-120 object-cover object-top"
         />
       </div>
 
